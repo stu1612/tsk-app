@@ -1,9 +1,7 @@
+import AppRoutes from "./Routes";
+
 function App() {
-  return (
-    <div className="App">
-      <h1 className="bg-red-500">hello</h1>
-    </div>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
