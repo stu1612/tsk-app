@@ -1,14 +1,14 @@
 // npm
 import { useState, useEffect } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { updateProfile } from "firebase/auth";
-import { db } from "../firebase/config";
 
 // files
 import { auth, storage } from "../firebase/config";
+import { db } from "../firebase/config";
 import { useAuthContext } from "./useAuthContext";
-import { doc, setDoc } from "firebase/firestore";
 
 export default function useSignUp() {
   // local state
@@ -19,7 +19,6 @@ export default function useSignUp() {
   // properties
   const { dispatch } = useAuthContext();
 
-  //   const signup = async (email:string, password:string, displayName:string, thumbnail:Blob ) => {
   const signup = async (
     email: string,
     password: string,
@@ -59,6 +58,7 @@ export default function useSignUp() {
       });
 
       dispatch({ type: "LOGIN", payload: res.user });
+      localStorage.setItem("user_token", res.user.uid);
       setLoading(false);
       setError(null);
 

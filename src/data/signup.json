@@ -1,0 +1,20 @@
+{
+  "email": {
+    "span": "Email",
+    "autoFocus": false,
+    "type": "email",
+    "required": true
+  },
+  "password": {
+    "span": "Password",
+    "autoFocus": false,
+    "type": "password",
+    "required": true
+  },
+  "displayName": {
+    "span": "Display Name",
+    "autoFocus": false,
+    "type": "text",
+    "required": true
+  }
+}

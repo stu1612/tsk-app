@@ -1,0 +1,18 @@
+[
+  {
+    "id": 0,
+    "path": "/"
+  },
+  {
+    "id": 1,
+    "path": "/collections"
+  },
+  {
+    "id": 2,
+    "path": "/icons"
+  },
+  {
+    "id": 3,
+    "path": "/users"
+  }
+]
