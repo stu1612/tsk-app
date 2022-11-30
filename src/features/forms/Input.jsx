@@ -3,16 +3,15 @@ export default function Input({ setup, state }) {
   const [getter, setter] = state;
 
   return (
-    <div className="relative z-0 w-full mb-8">
+    <div className="relative w-full mb-8">
       <input
         required={required}
         type={type}
-        placeholder={span}
         value={getter}
         onChange={(event) => setter(event.target.value)}
-        className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+        className="bg-transparent border-b w-full py-1 focus:outline-none focus:border-dark_500 focus:border-b-2 transition-colors peer"
       />
-      <label className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">
+      <label className="absolute left-0 top-1 text-slate-100 text-sm cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-slate-400 transition-all">
         {span}
       </label>
     </div>

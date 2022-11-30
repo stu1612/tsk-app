@@ -58,7 +58,6 @@ export default function useSignUp() {
       });
 
       dispatch({ type: "LOGIN", payload: res.user });
-      localStorage.setItem("user_token", res.user.uid);
       setLoading(false);
       setError(null);
 

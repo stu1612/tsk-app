@@ -15,6 +15,7 @@ import ResetPassword from "../pages/Tasks";
 // UI
 import { useAuthContext } from "../hooks/useAuthContext";
 import BottomNavbar from "../features/UI/BottomNavbar";
+import LoggedOutNav from "../features/UI/LoggedOutNav";
 // import Navbar from "./features/UI/Navbar";
 
 export default function AppRoutes() {
@@ -26,6 +27,7 @@ export default function AppRoutes() {
         <>
           {!user ? (
             <>
+              {/* <LoggedOutNav /> */}
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />

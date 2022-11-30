@@ -1,11 +1,16 @@
 // npm
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // files
 import Input from "../features/forms/Input";
 import useSignUp from "../hooks/useSignUp";
 import form from "../data/signup.json";
 import Loading from "../features/UI/Loading";
+import Button from "../features/UI/Button";
+import BoardingLayout from "../features/UI/BoardingLayout";
+import LoggedOutNav from "../features/UI/LoggedOutNav";
+import Header from "../features/UI/Header";
 
 export default function Signup() {
   // local state
@@ -47,29 +52,37 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex flex-col justify-start w-11/12 mx-auto h-screen items-center p-4">
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col">
-        <Input setup={form.email} state={[email, setEmail]} />
-        <Input setup={form.password} state={[password, setPassword]} />
-        <Input setup={form.displayName} state={[displayName, setDisplayName]} />
-        <input required type="file" onChange={handleFileChange} />
-        {imageError && <p className="bg-yello-500">{imageError}</p>}
-        <div>
-          <div>
-            <small>Stay signed in</small>
-            <input type="checkbox" name="" id="" />
+    <BoardingLayout>
+      <div className=" absolute h-screen z-40 w-full bg-slate-800 bg-opacity-40 backdrop-filter backdrop-blur-md"></div>
+      <LoggedOutNav />
+      <Header />
+      <section className="w-full z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:w-[400px] flex justify-center items-center min-h-fit rounded-3xl bg-slate-500 bg-opacity-60 backdrop-filter backdrop-blur-sm ">
+        <form onSubmit={handleSubmit} className="flex flex-col w-full p-8">
+          <Input setup={form.email} state={[email, setEmail]} />
+          <Input setup={form.password} state={[password, setPassword]} />
+          <Input
+            setup={form.displayName}
+            state={[displayName, setDisplayName]}
+          />
+          <div className="mb-8 flex justify-start">
+            <input
+              required
+              type="file"
+              onChange={handleFileChange}
+              className="text-sm"
+            />
+            {imageError && <p className="bg-yello-500">{imageError}</p>}
           </div>
-
-          <button className="bg-red-500 text-black p-2 cursor-pointer">
-            Sign up
-          </button>
-        </div>
-      </form>
-      {loading && <Loading />}
-      {/* {loading && <button disabled>Loading ..</button>}
+          <Button text="sign up" theme="light" />
+          <Link to="/" className="inline-grid">
+            <Button text="close" theme="dark" />
+          </Link>
+        </form>
+        {loading && <Loading />}
+        {/* {loading && <button disabled>Loading ..</button>}
         {!loading && <button>Sign up</button>} */}
-      {/* {error && <p>{error}</p>} */}
-    </div>
+        {/* {error && <p>{error}</p>} */}
+      </section>
+    </BoardingLayout>
   );
 }

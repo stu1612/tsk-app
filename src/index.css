@@ -14,12 +14,12 @@
 
 html,
 body {
-  background-color: #181818;
+  background-color: #1d1e26;
   font-family: "Inter", sans-serif;
   color: #fafafa;
 }
 
-input:focus ~ label,
+/* input:focus ~ label,
 input:not(:placeholder-shown) ~ label {
   @apply transform;
   @apply scale-75;
@@ -27,6 +27,6 @@ input:not(:placeholder-shown) ~ label {
 }
 
 input:focus ~ label {
-  @apply text-black;
+  @apply text-red-500;
   @apply left-0;
-}
+} */
