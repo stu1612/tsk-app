@@ -3,26 +3,28 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // files
-// import useLogin from "../hooks/useLogin";
-import Input from "../features/forms/Input";
-import form from "../data/signup.json";
+import useLogin from "../hooks/useLogin";
+
+// UI
 import Button from "../features/UI/Button";
-import image from "../assets/images/Boarding_BG.png";
-import BoardingLayout from "../features/UI/BoardingLayout";
-import LoggedOutNav from "../features/UI/LoggedOutNav";
+import form from "../data/signup.json";
 import Header from "../features/UI/Header";
+import Input from "../features/forms/Input";
+import Loading from "../features/UI/Loading";
+import OnBoardingLayout from "../features/UI/OnBoardingLayout";
+import OnBoardingNavbar from "../features/UI/OnBoardingNavbar";
 
 export default function Login() {
   // local state
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   // properties
-  // const { error, login } = useLogin();
+  const { login, error, loading } = useLogin();
 
   // methods
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    // login(email, password);
+    login(email, password);
     if (email && password) {
       setEmail("");
       setPassword("");
@@ -31,22 +33,25 @@ export default function Login() {
   }
 
   return (
-    <>
-      <BoardingLayout>
-        <div className=" absolute h-screen z-40 w-full bg-slate-800 bg-opacity-40 backdrop-filter backdrop-blur-md"></div>
-        <LoggedOutNav />
-        <Header />
-        <section className="w-full z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:w-[400px] flex justify-center items-center min-h-fit rounded-3xl bg-slate-500 bg-opacity-60 backdrop-filter backdrop-blur-sm ">
-          <form onSubmit={handleSubmit} className="flex flex-col w-full p-8">
-            <Input setup={form.email} state={[email, setEmail]} />
-            <Input setup={form.password} state={[password, setPassword]} />
-            <Button text="login" theme="light" />
-            <Link to="/" className="inline-grid">
-              <Button text="close" theme="dark" />
-            </Link>
-          </form>
-        </section>
-      </BoardingLayout>
-    </>
+    <OnBoardingLayout>
+      <div className="absolute h-screen z-40 w-full bg-dark_500 md:bg-opacity-40 backdrop-filter backdrop-blur-md"></div>
+      <OnBoardingNavbar />
+      <Header />
+      <section className=" z-50 w-11/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:w-[400px] grid min-h-fit  ">
+        <form
+          onSubmit={handleSubmit}
+          className="grid py-6 px-8 rounded-3xl md:bg-opacity-70 md:bg-slate-700 backdrop-filter backdrop-blur-md"
+        >
+          <Input setup={form.email} state={[email, setEmail]} />
+          <Input setup={form.password} state={[password, setPassword]} />
+          <Button text="login" theme="light" />
+          <Link to="/" className="inline-grid">
+            <Button text="close" theme="dark" />
+          </Link>
+          {error && <small className="text-yellow-600">{error}</small>}
+        </form>
+      </section>
+      {loading && <Loading />}
+    </OnBoardingLayout>
   );
 }

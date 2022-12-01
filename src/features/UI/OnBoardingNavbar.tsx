@@ -1,8 +1,11 @@
+// npm
 import { Link } from "react-router-dom";
-import Tab from "./Tab";
 import { TiTick } from "react-icons/ti";
 
-export default function LoggedOutNav() {
+// UI
+import Tab from "./Tab";
+
+export default function OnBoardingNavbar() {
   return (
     <nav className="flex justify-center">
       <div className="px-6 mx-auto h-20 w-full lg:w-[968px] flex justify-between items-center bg-dark_500 z-30 fixed">
@@ -16,11 +19,12 @@ export default function LoggedOutNav() {
           <Link to="/login" className="mr-4">
             <Tab text="log in" />
           </Link>
-          <div className="border border-slate-700 rounded-md hover:border-transparent ease-in duration-300">
-            <Link to="/signup">
-              <Tab text="sign in" />
-            </Link>
-          </div>
+          <Link
+            to="/signup"
+            className="border border-slate-700 rounded-md hover:border-transparent ease-in duration-300"
+          >
+            <Tab text="sign up" />
+          </Link>
         </div>
       </div>
     </nav>

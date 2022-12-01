@@ -1,17 +1,6 @@
-// npm
-import LoggedOutNav from "../../features/UI/LoggedOutNav";
-import Header from "../../features/UI/Header";
-
-export default function BoardingLayout({ children }: any) {
+export default function OnBoardingLayout({ children }: any) {
   return (
     <main className="relative mx-auto h-screen w-full flex justify-center">
-      {/* <div className="relative mx-auto h-screen w-full lg:w-[968px] bg-red-500">
-        <LayoutEffects />
-        <LoggedOutNav />
-        <Header />
-        {children}
-      </div> */}
-      {/* <LoggedOutNav /> */}
       <LayoutEffects />
       {children}
     </main>

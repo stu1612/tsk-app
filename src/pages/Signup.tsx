@@ -1,24 +1,27 @@
 // npm
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 // files
-import Input from "../features/forms/Input";
-import useSignUp from "../hooks/useSignUp";
 import form from "../data/signup.json";
-import Loading from "../features/UI/Loading";
+import useSignUp from "../hooks/useSignUp";
+
+// UI
 import Button from "../features/UI/Button";
-import BoardingLayout from "../features/UI/BoardingLayout";
-import LoggedOutNav from "../features/UI/LoggedOutNav";
+import FileInput from "../features/forms/FileInput";
+import GoBackButton from "../features/UI/GoBackButton";
 import Header from "../features/UI/Header";
+import Input from "../features/forms/Input";
+import Loading from "../features/UI/Loading";
+import OnBoardingLayout from "../features/UI/OnBoardingLayout";
+import OnBoardingNavbar from "../features/UI/OnBoardingNavbar";
 
 export default function Signup() {
   // local state
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [displayName, setDisplayName] = useState<string>("");
+  const [name, setName] = useState<string>("");
   const [thumbnail, setThumbnail] = useState<Blob | string>("");
-  const [imageError, setImageError] = useState<string | null>("");
+  const [imgError, setImgError] = useState<string | null>("");
 
   // properties
   const { signup, error, loading } = useSignUp();
@@ -26,7 +29,7 @@ export default function Signup() {
   // methods
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    signup(email, password, displayName, thumbnail);
+    signup(email, password, name, thumbnail);
   }
 
   const handleFileChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -35,54 +38,41 @@ export default function Signup() {
     let selected = result![0];
 
     if (!selected) {
-      setImageError("Add file");
+      setImgError("Please add a image thumbnail for your profile");
       return;
     }
     if (!selected.type.includes("image")) {
-      setImageError("Selected file must be a image file");
+      setImgError("Selected file must be a image file (png/jpg/jpeg)");
       return;
     }
-    if (selected.size > 100000) {
-      setImageError("Image file size must be less than 100kb");
+    if (selected.size > 200000) {
+      setImgError("Image file size must be less than 200kb");
       return;
     }
-
-    setImageError(null);
+    setImgError(null);
     setThumbnail(selected);
   };
 
   return (
-    <BoardingLayout>
-      <div className=" absolute h-screen z-40 w-full bg-slate-800 bg-opacity-40 backdrop-filter backdrop-blur-md"></div>
-      <LoggedOutNav />
+    <OnBoardingLayout>
+      <div className="absolute h-screen z-40 w-full bg-dark_500 md:bg-opacity-40 backdrop-filter backdrop-blur-md"></div>
+      <OnBoardingNavbar />
       <Header />
-      <section className="w-full z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:w-[400px] flex justify-center items-center min-h-fit rounded-3xl bg-slate-500 bg-opacity-60 backdrop-filter backdrop-blur-sm ">
-        <form onSubmit={handleSubmit} className="flex flex-col w-full p-8">
+      <section className=" z-50 w-11/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:w-[400px] grid min-h-fit  ">
+        <form
+          onSubmit={handleSubmit}
+          className="grid py-6 px-8 rounded-3xl md:bg-opacity-70 md:bg-slate-700 backdrop-filter backdrop-blur-md"
+        >
           <Input setup={form.email} state={[email, setEmail]} />
           <Input setup={form.password} state={[password, setPassword]} />
-          <Input
-            setup={form.displayName}
-            state={[displayName, setDisplayName]}
-          />
-          <div className="mb-8 flex justify-start">
-            <input
-              required
-              type="file"
-              onChange={handleFileChange}
-              className="text-sm"
-            />
-            {imageError && <p className="bg-yello-500">{imageError}</p>}
-          </div>
+          <Input setup={form.displayName} state={[name, setName]} />
+          <FileInput imgError={imgError} handleFileChange={handleFileChange} />
           <Button text="sign up" theme="light" />
-          <Link to="/" className="inline-grid">
-            <Button text="close" theme="dark" />
-          </Link>
+          <GoBackButton />
+          {error && <small className="text-yellow-600">{error}</small>}
         </form>
-        {loading && <Loading />}
-        {/* {loading && <button disabled>Loading ..</button>}
-        {!loading && <button>Sign up</button>} */}
-        {/* {error && <p>{error}</p>} */}
       </section>
-    </BoardingLayout>
+      {loading && <Loading />}
+    </OnBoardingLayout>
   );
 }

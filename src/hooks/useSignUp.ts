@@ -1,9 +1,8 @@
 // npm
 import { useState, useEffect } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { updateProfile } from "firebase/auth";
 
 // files
 import { auth, storage } from "../firebase/config";

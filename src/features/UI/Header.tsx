@@ -17,8 +17,10 @@ export default function Header() {
           completion.
         </p>
         <div className="mt-10 mx-auto flex flex-col md:flex-row">
-          <Button text="get started" theme="light" />
-          <Link to={"/"} className="md:ml-4">
+          <Link to="/signup">
+            <Button text="get started" theme="light" />
+          </Link>
+          <Link to={"/learn_more"} className="md:ml-4">
             <Button text="learn more" theme="dark" />
           </Link>
         </div>

@@ -11,11 +11,11 @@ import Collections from "../pages/Collections";
 import Tasks from "../pages/Tasks";
 import Icons from "../pages/Icons";
 import ResetPassword from "../pages/Tasks";
+import LearnMore from "../pages/LearnMore";
 
 // UI
 import { useAuthContext } from "../hooks/useAuthContext";
 import BottomNavbar from "../features/UI/BottomNavbar";
-import LoggedOutNav from "../features/UI/LoggedOutNav";
 // import Navbar from "./features/UI/Navbar";
 
 export default function AppRoutes() {
@@ -27,12 +27,12 @@ export default function AppRoutes() {
         <>
           {!user ? (
             <>
-              {/* <LoggedOutNav /> */}
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/reset_password" element={<ResetPassword />} />
+                <Route path="/learn_more" element={<LearnMore />} />
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </>
