@@ -1,4 +1,5 @@
 // npm
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { MdSpaceDashboard } from "react-icons/md";
 import { MdCollectionsBookmark } from "react-icons/md";
@@ -18,8 +19,15 @@ type NavbarProp = {
 };
 
 export default function MainNavbar({ burger }: NavbarProp) {
+  // local state
+  const [show, setShow] = useState(true);
   // global state
   const { user } = useAuthContext();
+
+  // methods
+  function toggleShow() {
+    setShow(!show);
+  }
 
   // components
   const NavItems = data.map((item, i) => {
@@ -40,15 +48,17 @@ export default function MainNavbar({ burger }: NavbarProp) {
   });
 
   return (
-    <nav className="fixed bg-black w-full h-20 z-50 items-center justify-between px-2 hidden md:flex">
-      <div className="flex flex-row items-center">
-        {burger && <h1>Hamburger</h1>}
-        {NavItems}
-      </div>
-      <div>
-        <Avatar src={user.photoURL} />
-      </div>
-      <SideBar />
-    </nav>
+    <>
+      <nav className="fixed bg-black w-full h-20 z-50 items-center justify-between px-2 hidden md:flex">
+        <div className="flex flex-row items-center">
+          {burger && <h1 onClick={toggleShow}>Hamburger</h1>}
+          {NavItems}
+        </div>
+        <div>
+          <Avatar src={user.photoURL} />
+        </div>
+      </nav>
+      {burger && <SideBar show={show} />}
+    </>
   );
 }

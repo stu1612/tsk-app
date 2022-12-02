@@ -35,12 +35,13 @@ export default function Icons() {
         <img src={item.icon} alt={item.title} />
       </div>
     ));
+
   return (
     <main>
       <div>
         <h1>Icons</h1>
       </div>
-      <section>{IconList}</section>
+      {/* <section>{IconList}</section> */}
     </main>
   );
 }
