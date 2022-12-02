@@ -29,7 +29,6 @@ export default function Login() {
       setEmail("");
       setPassword("");
     }
-    setTimeout(() => {}, 1000);
   }
 
   return (

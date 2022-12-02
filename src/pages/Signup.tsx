@@ -42,7 +42,7 @@ export default function Signup() {
       return;
     }
     if (!selected.type.includes("image")) {
-      setImgError("Selected file must be a image file (png/jpg/jpeg)");
+      setImgError("Selected file must be a image file * png/gif/jpg *");
       return;
     }
     if (selected.size > 200000) {
@@ -67,7 +67,8 @@ export default function Signup() {
           <Input setup={form.password} state={[password, setPassword]} />
           <Input setup={form.displayName} state={[name, setName]} />
           <FileInput imgError={imgError} handleFileChange={handleFileChange} />
-          <Button text="sign up" theme="light" />
+          {imgError && <Button text="sign up" theme="light" disabled={true} />}
+          {!imgError && <Button text="sign up" theme="light" />}
           <GoBackButton />
           {error && <small className="text-yellow-600">{error}</small>}
         </form>

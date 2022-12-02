@@ -2,9 +2,15 @@ type ButtonProps = {
   text: string;
   theme: string;
   clickHandler?: () => void;
+  disabled?: boolean;
 };
 
-export default function Button({ text, theme, clickHandler }: ButtonProps) {
+export default function Button({
+  text,
+  theme,
+  clickHandler,
+  disabled,
+}: ButtonProps) {
   return (
     <button
       className={`text-md rounded-md py-3 px-5 mb-4  capitalize text-sm hover:animate-pulse pointer-events-auto  ${
@@ -13,6 +19,7 @@ export default function Button({ text, theme, clickHandler }: ButtonProps) {
           : "bg-slate-700"
       }`}
       onClick={clickHandler}
+      disabled={disabled}
     >
       {text}
     </button>
