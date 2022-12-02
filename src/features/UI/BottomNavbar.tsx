@@ -27,9 +27,8 @@ const navItems = data.map((item, i) => {
 
 export default function BottomNavbar() {
   return (
-    <div className="fixed bottom-0 flex items-center justify-around bg-black h-12 w-full mt-4 md:hidden">
+    <nav className="fixed z-50 bottom-0 flex items-center justify-around bg-black h-12 w-full mt-4 md:hidden">
       {navItems}
-      <FaUserCircle size={24} />
-    </div>
+    </nav>
   );
 }

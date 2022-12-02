@@ -12,11 +12,16 @@ import Tasks from "../pages/Tasks";
 import Icons from "../pages/Icons";
 import ResetPassword from "../pages/Tasks";
 import LearnMore from "../pages/LearnMore";
+import User from "../pages/User";
 
 // UI
 import { useAuthContext } from "../hooks/useAuthContext";
 import BottomNavbar from "../features/UI/BottomNavbar";
 // import Navbar from "./features/UI/Navbar";
+import MainNavbar from "../features/UI/MainNavbar";
+
+// files
+import CategoryContextProvider from "../context/CategoryContext";
 
 export default function AppRoutes() {
   const { user, authIsReady } = useAuthContext();
@@ -38,15 +43,17 @@ export default function AppRoutes() {
             </>
           ) : (
             <>
-              {/* <Navbar /> */}
               <BottomNavbar />
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/collections" element={<Collections />} />
-                <Route path="/tasks/:title" element={<Tasks />} />
-                <Route path="/icons" element={<Icons />} />
-                <Route path="*" element={<Navigate to="/" />} />
-              </Routes>
+              <CategoryContextProvider>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/collections" element={<Collections />} />
+                  <Route path="/tasks/:title" element={<Tasks />} />
+                  <Route path="/icons" element={<Icons />} />
+                  <Route path="/user" element={<User />} />
+                  <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+              </CategoryContextProvider>
             </>
           )}
         </>
