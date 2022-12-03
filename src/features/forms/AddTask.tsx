@@ -28,14 +28,15 @@ export default function AddTask({ id }: idProp) {
     setTask("");
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="relative">
       <input
         type="text"
         placeholder="Add a task"
         value={task}
         onChange={handleChange}
-        className=" w-full bg-yellow-500"
+        className=" w-full bg-yellow-500 absolute pl-12"
       />
+      <button className="bg-blue-500 z-50 absolute">Add</button>
     </form>
   );
 }
