@@ -71,10 +71,7 @@ export default function Tasks() {
       <main className=" md:flex items-center justify-center ">
         <section className="absolute h-fit w-full pb-32 px-2 md:w-[500px] md:px-0 md:top-24  overflow-scroll">
           <div className="flex flex-row items-center ">
-            <div
-              className=" text-center p-1 rounded-lg mr-2"
-              style={{ background: "#20212C" }}
-            >
+            <div className=" text-center p-1 rounded-lg mr-2 bg-gray-800 cursor-pointer transition-all ease-in duration-150 hover:scale-110 hover:bg-gray-700">
               <MdArrowBackIos style={{ paddingLeft: "5px" }} />
             </div>
             <h2 className="text-slate-200 text-2xl font-lg">{title}</h2>
@@ -100,7 +97,7 @@ export default function Tasks() {
       </main>
       <div className="fixed bottom-0 w-full flex items-center flex-row justify-center bg-dark_500 p-8 md:hidden">
         <Link to={`/tasks/add_task`} state={id}>
-          <button className="bg-primary py-3 px-3 rounded-xl text-lg ">
+          <button className="bg-primary py-3 px-3 rounded-xl text-lg transition ease-in duration-150 hover:scale-125">
             <RiAddFill color="white" size={24} />
           </button>
         </Link>

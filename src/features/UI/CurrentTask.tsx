@@ -22,10 +22,7 @@ export default function CurrentTask({
   const { update } = useUpdateTaskStatus();
   return (
     <div className="w-full">
-      <div
-        className="flex flex-col p-2 rounded-xl my-2"
-        style={{ background: "#20212C" }}
-      >
+      <div className="flex flex-col p-2 rounded-xl my-2 bg-gray-800">
         <div className="flex flex-row">
           <CheckBox
             isChecked={isChecked}
