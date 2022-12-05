@@ -11,7 +11,7 @@ export default function Input({ setup, state }) {
         placeholder={span}
         value={getter}
         onChange={(event) => setter(event.target.value)}
-        className="bg-transparent border-b w-full py-1 focus:outline-none focus:border-dark_500 focus:border-b-2 transition-colors peer"
+        className="bg-transparent border-b w-full py-1 focus:ring-0 border-0 focus:border-dark_500 focus:border-b-2 transition-colors peer"
       />
       <label className="absolute left-0 top-1 text-transparent text-sm cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-slate-400 transition-all">
         {span}

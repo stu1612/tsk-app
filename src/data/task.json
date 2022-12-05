@@ -1,0 +1,8 @@
+{
+  "task": {
+    "span": "Task",
+    "autoFocus": true,
+    "type": "text",
+    "required": true
+  }
+}

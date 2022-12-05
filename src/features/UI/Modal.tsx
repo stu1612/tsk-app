@@ -9,7 +9,7 @@ interface iProps {
 export const Modal = ({ isModal, children }: iProps) => {
   return isModal
     ? ReactDOM.createPortal(
-        <div className="fixed inset-0 bg-dark_500 bg-opacity-40 z-40 overflow-y-auto h-screen w-full backdrop-filter backdrop-blur-sm flex flex-col justify-center items-center ">
+        <div className="fixed inset-0 bg-dark_500 bg-opacity-40 overflow-y-auto h-screen w-full backdrop-filter backdrop-blur-sm flex flex-col justify-center items-center ">
           <div aria-modal aria-hidden tabIndex={-1} role="dialog">
             {children}
           </div>

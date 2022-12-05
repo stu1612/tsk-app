@@ -9,6 +9,7 @@ import useCategoryContext from "../hooks/useCategoryContext";
 import greeting from "../utils/greeting";
 import capitalizeString from "../utils/capitalizeString";
 import MainNavbar from "../features/UI/MainNavbar";
+import BottomNavbar from "../features/UI/BottomNavbar";
 
 export interface iCollection {
   id: string;
@@ -55,6 +56,7 @@ export default function Dashboard() {
           {DashboardItems}
         </section>
       </div>
+      <BottomNavbar />
     </main>
   );
 }

@@ -1,4 +1,5 @@
 // files
+import BottomNavbar from "../features/UI/BottomNavbar";
 import MainNavbar from "../features/UI/MainNavbar";
 
 export default function Collections() {
@@ -12,6 +13,7 @@ export default function Collections() {
           </div>
         </section>
       </div>
+      <BottomNavbar />
     </main>
   );
 }
