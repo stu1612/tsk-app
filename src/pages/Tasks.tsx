@@ -19,6 +19,7 @@ type TaskItemTypes = {
   timestamp: any;
   title: string;
   id: string;
+  color?: string;
 };
 
 export default function Tasks() {
@@ -71,9 +72,12 @@ export default function Tasks() {
       <main className=" md:flex items-center justify-center ">
         <section className="absolute h-fit w-full pb-32 px-2 md:w-[500px] md:px-0 md:top-24  overflow-scroll">
           <div className="flex flex-row items-center ">
-            <div className=" text-center p-1 rounded-lg mr-2 bg-gray-800 cursor-pointer transition-all ease-in duration-150 hover:scale-110 hover:bg-gray-700">
+            <Link
+              to={".."}
+              className=" text-center p-1 rounded-lg mr-2 bg-gray-800 cursor-pointer transition-all ease-in duration-150 hover:scale-110 hover:bg-gray-700"
+            >
               <MdArrowBackIos style={{ paddingLeft: "5px" }} />
-            </div>
+            </Link>
             <h2 className="text-slate-200 text-2xl font-lg">{title}</h2>
           </div>
           <div className="hidden md:grid md:mt-2">

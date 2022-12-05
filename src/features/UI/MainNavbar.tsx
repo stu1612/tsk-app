@@ -37,7 +37,7 @@ export default function MainNavbar({ burger }: NavbarProp) {
         to={item.path}
         key={item.id}
         className={({ isActive }) =>
-          isActive ? "text-slate-300" : "text-slate-600"
+          isActive ? "text-slate-300" : "text-slate-500"
         }
         style={{ display: "flex", alignItems: "center", margin: "0 1rem" }}
       >
@@ -49,7 +49,7 @@ export default function MainNavbar({ burger }: NavbarProp) {
 
   return (
     <>
-      <nav className="fixed bg-black w-full h-20 z-50 items-center justify-between px-2 hidden md:flex">
+      <nav className="fixed bg-gray-800 w-full h-20 z-50 items-center justify-between px-2 hidden md:flex">
         <div className="flex flex-row items-center">
           {burger && <h1 onClick={toggleShow}>Hamburger</h1>}
           {NavItems}

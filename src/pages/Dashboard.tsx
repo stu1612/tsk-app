@@ -45,7 +45,7 @@ export default function Dashboard() {
       <MobileNavbar />
       <MainNavbar burger={true} />
       <div className=" md:flex items-center justify-center">
-        <section className="absolute top-24 h-fit w-full pb-24 px-4 overflow-scroll md:w-[500px] md:px-0  ">
+        <section className="absolute top-24 h-fit w-full pb-24 px-4 overflow-scroll md:w-[500px] md:px-0 ">
           <div className="hidden w-8/12 pb-8 pt-8 md:block">
             <h2 className="text-slate-200 text-2xl font-lg">Dashboard</h2>
           </div>
@@ -66,7 +66,7 @@ const MobileNavbar = () => {
   const { user } = useAuthContext();
 
   return (
-    <nav className="fixed bg-black w-full h-20 z-50 flex items-center justify-between px-2 md:hidden">
+    <nav className="fixed bg-dark_500 w-full h-20 z-50 flex items-center justify-between px-2 md:hidden">
       <h1 className="text-2xl">Dashboard</h1>
       <Avatar src={user.photoURL} />
     </nav>

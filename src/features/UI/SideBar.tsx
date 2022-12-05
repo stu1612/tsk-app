@@ -29,7 +29,7 @@ export default function SideBar({ show }: Props) {
 
   return (
     <div
-      className={`hidden fixed left-0 top-20 h-screen w-44  bg-black md:block mr-8 
+      className={`hidden fixed left-0 top-20 h-screen w-44  bg-gray-800 md:block mr-8 
       ${show ? "translate-x-0 " : "-translate-x-full"} `}
     >
       <h2>Collections</h2>

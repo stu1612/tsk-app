@@ -10,6 +10,7 @@ type TaskProp = {
   timestamp: any;
   path: string;
   id: string;
+  color?: string;
 };
 
 export default function CurrentTask({
@@ -18,6 +19,7 @@ export default function CurrentTask({
   id,
   isChecked,
   path,
+  color,
 }: TaskProp) {
   const { update } = useUpdateTaskStatus();
   return (
@@ -27,6 +29,7 @@ export default function CurrentTask({
           <CheckBox
             isChecked={isChecked}
             handleChange={() => update(path, id, true)}
+            color={color}
           />
           <h2>{capitalizeString(title)}</h2>
         </div>

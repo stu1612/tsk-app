@@ -27,7 +27,7 @@ const navItems = data.map((item, i) => {
 
 export default function BottomNavbar() {
   return (
-    <nav className="fixed z-50 bottom-0 flex items-center justify-around bg-black h-12 w-full mt-4 md:hidden">
+    <nav className="fixed z-50 bottom-0 flex items-center justify-around bg-dark_500 h-12 w-full mt-4 md:hidden">
       {navItems}
     </nav>
   );

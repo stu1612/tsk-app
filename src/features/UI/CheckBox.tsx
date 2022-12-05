@@ -20,6 +20,7 @@ export default function CheckBox({ isChecked, handleChange, color }: Props) {
               }
             : {
                 borderColor: color,
+                backgroundColor: "#1f2937",
               }
           : isChecked
           ? {
@@ -28,7 +29,7 @@ export default function CheckBox({ isChecked, handleChange, color }: Props) {
             }
           : {
               borderColor: "#f472b6",
-              backgroundColor: "transparent",
+              backgroundColor: "#20212C",
             }
       }
     />
