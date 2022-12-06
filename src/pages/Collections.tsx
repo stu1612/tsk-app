@@ -1,40 +1,14 @@
 // files
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import BottomNavbar from "../features/UI/BottomNavbar";
 import MainNavbar from "../features/UI/MainNavbar";
 import { CategoryType } from "../global";
 import useCategoryContext from "../hooks/useCategoryContext";
-import useCollection from "../hooks/useCollection";
-import { useAuthContext } from "../hooks/useAuthContext";
 import CollectionItem from "../features/UI/CollectionItem";
-
-type TaskItemTypes = {
-  isChecked: boolean;
-  timestamp: any;
-  title: string;
-  id: string;
-  color?: string;
-};
+import Tab from "../features/UI/Tab";
 
 export default function Collections() {
   const { categories } = useCategoryContext();
-  const [tasks, setTasks] = useState([]);
-  const { user } = useAuthContext();
-  // const path = `users/${user.uid}/categories/${id}/tasks`;
-  // const { docs } = useCollection(path);
-
-  // useEffect(() => {
-  //   const clonedArr = Object.assign([], docs);
-  //   setTasks(clonedArr);
-  // }, [docs]);
-
-  // methods
-  function countIsChecked(status: boolean) {
-    const count =
-      tasks &&
-      tasks.filter((item: TaskItemTypes) => item.isChecked === status).length;
-    return count;
-  }
 
   const activeItems =
     categories &&
@@ -50,9 +24,15 @@ export default function Collections() {
           <div className="w-8/12 pb-8 pt-8 ">
             <h2 className="text-slate-200 text-2xl font-lg">Collections</h2>
           </div>
-          <div className="text-md rounded-lg py-2 px-5 mb-6 bg-slate-600 inline-grid">
+          <div className="text-md rounded-lg py-2 px-5 mb-6 mr-2 bg-slate-600 inline-grid">
             <small>All collections</small>
           </div>
+          <Link
+            to="/icons"
+            className="text-md rounded-lg py-2 px-5 mb-6 bg-dark_500 border border-gray-700 inline-grid animate-pulse hover:bg-primary "
+          >
+            <small>Add collection</small>
+          </Link>
           <div className="flex flex-wrap">{activeItems}</div>
         </section>
       </div>
