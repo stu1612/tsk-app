@@ -1,8 +1,8 @@
 // files
+import { useEffect, useState } from "react";
 import MainNavbar from "../features/UI/MainNavbar";
 import { useAuthContext } from "../hooks/useAuthContext";
 import useAddCategory from "../hooks/useAddCategory";
-import useCategoryContext from "../hooks/useCategoryContext";
 import useCollection from "../hooks/useCollection";
 
 type ItemProps = {
@@ -10,6 +10,7 @@ type ItemProps = {
   title: string;
   icon: string;
   color: string;
+  isChecked: boolean;
 };
 
 export default function Icons() {
@@ -20,29 +21,42 @@ export default function Icons() {
   const { addCategoryToCollection } = useAddCategory();
   const { user } = useAuthContext();
 
-  const categories =
+  // useEffect(() => {
+  //   const clonedArr = Object.assign([], docs);
+  //   setCategories(clonedArr);
+  // }, [docs]);
+
+  async function addToList(item: {
+    title: string;
+    icon: string;
+    color: string;
+    isChecked: boolean;
+  }) {
+    addCategoryToCollection(
+      `users/${user.uid}/categories`,
+      item.title,
+      item.icon,
+      item.color,
+      item.isChecked
+    );
+  }
+
+  const CategoryItems =
     docs &&
     (docs as unknown as any[]).map((item: ItemProps) => (
-      <div
+      <button
         key={item.id}
         className={`bg-dark_500 border-2 rounded-3xl inline-block m-6 p-6 hover:bg-${"item.color"}`}
         style={{ borderColor: item.color }}
-        onClick={() =>
-          addCategoryToCollection(
-            `users/${user.uid}/categories`,
-            item.title,
-            item.icon,
-            item.color
-          )
-        }
       >
         <img
           src={item.icon}
           alt={item.title}
           className="h-8 w-8"
           style={{ color: item.color }}
+          onClick={() => addToList(item)}
         />
-      </div>
+      </button>
     ));
 
   return (
@@ -53,7 +67,7 @@ export default function Icons() {
           <div className="w-8/12 pb-8 pt-8 ">
             <h2 className="text-slate-200 text-2xl font-lg">Collection List</h2>
           </div>
-          <div>{categories}</div>
+          <div>{CategoryItems}</div>
         </section>
       </div>
     </main>

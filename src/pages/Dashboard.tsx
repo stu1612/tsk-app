@@ -5,7 +5,6 @@ import DashboardItem from "../features/UI/DashboardItem";
 // files
 import { CategoryType } from "../global";
 import { useAuthContext } from "../hooks/useAuthContext";
-import useCategoryContext from "../hooks/useCategoryContext";
 import greeting from "../utils/greeting";
 import capitalizeString from "../utils/capitalizeString";
 import MainNavbar from "../features/UI/MainNavbar";
@@ -25,13 +24,12 @@ export default function Dashboard() {
 
   // properties
   const timeOfDay = greeting();
-  const { categories } = useCategoryContext();
 
-  const DashboardItems =
-    categories &&
-    categories.map((item: CategoryType) => (
-      <DashboardItem key={item.id} {...item} />
-    ));
+  // const DashboardItems =
+  //   categories &&
+  //   categories.map((item: CategoryType) => (
+  //     <DashboardItem key={item.id} {...item} />
+  //   ));
 
   // components
   const GreetingMessage = (
@@ -53,7 +51,7 @@ export default function Dashboard() {
           <div className="text-md rounded-lg py-2 px-5 mb-6 bg-slate-600 inline-grid">
             <small>Overview</small>
           </div>
-          {DashboardItems}
+          {/* {DashboardItems} */}
         </section>
       </div>
       <BottomNavbar />
