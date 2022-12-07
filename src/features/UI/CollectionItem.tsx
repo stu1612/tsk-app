@@ -1,35 +1,44 @@
-import getPercentage from "../../utils/getPercentage";
+// npm
+import { useEffect, useState } from "react";
+
+// files
+import { useAuthContext } from "../../hooks/useAuthContext";
 import countArr from "../../utils/countArray";
 import countIsChecked from "../../utils/countIsChecked";
-import { useEffect, useState } from "react";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import getPercentage from "../../utils/getPercentage";
 import useCollection from "../../hooks/useCollection";
+
+// UI
 import ProgressBar from "./ProgressBar";
 
 type Props = {
   id: string;
-  image: string;
+  icon: string;
   title: string;
   color: string;
 };
 
-export default function CollectionItem({ id, image, title, color }: Props) {
+export default function CollectionItem({ id, icon, title, color }: Props) {
+  // local state
   const [tasks, setTasks] = useState([]);
+
+  // properties
   const { user } = useAuthContext();
   const path = `users/${user.uid}/categories/${id}/tasks`;
   const { docs } = useCollection(path);
 
+  // useEffect that saves the returned docs collection in array state
   useEffect(() => {
     const clonedArr = Object.assign([], docs);
     setTasks(clonedArr);
   }, [docs]);
 
+  // function properties that counts total tasks - active tasks and calculates completed percentage - used for circle progress bar
   const totalTasks = countArr(tasks);
   const currentTasks = countIsChecked(tasks, true);
-
   const percentage = getPercentage(totalTasks, currentTasks);
 
-  // methods
+  // returned message based on task completion status
   function taskStatusMessage() {
     if (totalTasks > currentTasks) return `${currentTasks}/${totalTasks} done`;
     if (totalTasks === currentTasks) return `all ${currentTasks} done`;
@@ -38,7 +47,7 @@ export default function CollectionItem({ id, image, title, color }: Props) {
   return (
     <div className="min-w-[170px] mr-2 bg-gray-800 rounded-2xl p-5">
       <img
-        src={image}
+        src={icon}
         alt={title}
         className="h-8 w-8 rounded-t-xl rounded-b-2xl p-1"
         style={{ background: color }}

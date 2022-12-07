@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// npm
 import { FiArrowRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 // files
-import CurrentTask from "./CurrentTask";
-import useCollection from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import useCollection from "../../hooks/useCollection";
+import { CategoryType } from "../../global";
 
-type Props = {
-  title: string;
-  id: string;
-  image: string;
-  color: string;
-};
+// UI
+import CurrentTask from "./CurrentTask";
 
 type TaskItemTypes = {
   isChecked: boolean;
@@ -22,22 +18,21 @@ type TaskItemTypes = {
   color: string;
 };
 
-export default function DashboardItem({ title, id, image, color }: Props) {
-  const [tasks, setTasks] = useState([]);
-
+export default function DashboardItem({
+  title,
+  id,
+  icon,
+  color,
+}: CategoryType) {
+  // properties
   const { user } = useAuthContext();
-  const path = `users/${user.uid}/categories/${id}/tasks`;
+  const path = `users/${user.uid}/category/${id}/tasks`;
   const { docs } = useCollection(path);
-
-  useEffect(() => {
-    const clonedArr = Object.assign([], docs);
-    setTasks(clonedArr);
-  }, [docs]);
 
   // components
   const CurrentTasks =
-    tasks &&
-    tasks.map((item: TaskItemTypes) => {
+    docs &&
+    (docs as unknown as any[]).map((item: TaskItemTypes) => {
       return (
         !item.isChecked && (
           <CurrentTask key={item.id} {...item} path={path} color={color} />
@@ -49,7 +44,7 @@ export default function DashboardItem({ title, id, image, color }: Props) {
     <div className="bg-gray-800 overflow-hidden mb-6 rounded-xl ">
       <div className="flex flex-row items-center justify-start p-4 bg-gray-700">
         <img
-          src={image}
+          src={icon}
           alt={title}
           className="h-8 rounded-t-xl rounded-b-2xl p-1 mr-2"
           style={{ backgroundColor: color }}

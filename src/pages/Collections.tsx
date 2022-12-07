@@ -1,18 +1,22 @@
-// files
+// npm
 import { Link } from "react-router-dom";
-import BottomNavbar from "../features/UI/BottomNavbar";
-import MainNavbar from "../features/UI/MainNavbar";
+
+// files
 import { CategoryType } from "../global";
-import CollectionItem from "../features/UI/CollectionItem";
-import useCollection from "../hooks/useCollection";
 import { useAuthContext } from "../hooks/useAuthContext";
+import useCollection from "../hooks/useCollection";
+
+// UI
+import BottomNavbar from "../features/UI/BottomNavbar";
+import CollectionItem from "../features/UI/CollectionItem";
+import MainNavbar from "../features/UI/MainNavbar";
 
 export default function Collections() {
+  // properties
   const { user } = useAuthContext();
-
   const { docs } = useCollection(`users/${user.uid}/category`);
 
-  console.log(docs);
+  // components
   const activeItems =
     docs &&
     (docs as unknown as any[]).map((item: CategoryType) => (

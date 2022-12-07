@@ -1,6 +1,7 @@
 export type CategoryType = {
   color: string;
-  image: string;
+  isChecked: boolean;
+  icon: string;
   id: string;
   title: string;
 };

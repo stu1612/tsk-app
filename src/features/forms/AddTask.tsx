@@ -25,7 +25,7 @@ export default function AddTask({ id }: Prop) {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    addTask(`users/${user.uid}/categories/${id}/tasks`, task);
+    addTask(`users/${user.uid}/category/${id}/tasks`, task);
     setTask("");
   };
   return (
