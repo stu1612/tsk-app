@@ -15,11 +15,10 @@ import LearnMore from "../pages/LearnMore";
 import User from "../pages/User";
 import MobileAddTask from "../pages/MobileAddTask";
 
+import Play from "../pages/Play";
+
 // UI
 import { useAuthContext } from "../hooks/useAuthContext";
-
-// files
-import CategoryContextProvider from "../context/CategoryContext";
 
 export default function AppRoutes() {
   const { user, authIsReady } = useAuthContext();
@@ -31,6 +30,7 @@ export default function AppRoutes() {
           {!user ? (
             <>
               <Routes>
+                {/* <Route path="/" element={<Play />} /> */}
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
@@ -41,17 +41,15 @@ export default function AppRoutes() {
             </>
           ) : (
             <>
-              <CategoryContextProvider>
-                <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/collections" element={<Collections />} />
-                  <Route path="/tasks/:title" element={<Tasks />} />
-                  <Route path="/tasks/add_task" element={<MobileAddTask />} />
-                  <Route path="/icons" element={<Icons />} />
-                  <Route path="/user" element={<User />} />
-                  <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
-              </CategoryContextProvider>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/collections" element={<Collections />} />
+                <Route path="/tasks/:title" element={<Tasks />} />
+                <Route path="/tasks/add_task" element={<MobileAddTask />} />
+                <Route path="/icons" element={<Icons />} />
+                <Route path="/user" element={<User />} />
+                <Route path="*" element={<Navigate to="/" />} />
+              </Routes>
             </>
           )}
         </>

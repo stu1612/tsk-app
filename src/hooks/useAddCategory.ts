@@ -1,31 +1,28 @@
 // npm
-import { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 // files
 import { db } from "../firebase/config";
 
 export default function useAddCategory() {
-  const [selected, setSelected] = useState(false);
-
-  async function addCategoryToCollection(
+  async function addCategory(
     path: string,
-    title: string,
-    icon: string,
     color: string,
-    isChecked: boolean
+    icon: string,
+    isChecked: boolean,
+    title: string
   ) {
     try {
-      const ref = collection(db, path);
-      await addDoc(ref, {
-        title: title,
-        image: icon,
+      const docData = {
         color: color,
-        isChecked: true,
-      });
-      setSelected(true);
+        icon: icon,
+        isChecked: isChecked,
+        title: title,
+      };
+
+      await setDoc(doc(db, path, title), docData);
     } catch (err) {
       console.log(err);
     }
   }
-  return { addCategoryToCollection };
+  return { addCategory };
 }

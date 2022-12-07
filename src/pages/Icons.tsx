@@ -1,9 +1,13 @@
+// npm
+import { useState } from "react";
+
 // files
-import { useEffect, useState } from "react";
-import MainNavbar from "../features/UI/MainNavbar";
 import { useAuthContext } from "../hooks/useAuthContext";
 import useAddCategory from "../hooks/useAddCategory";
 import useCollection from "../hooks/useCollection";
+
+// UI
+import MainNavbar from "../features/UI/MainNavbar";
 
 type ItemProps = {
   id: string;
@@ -14,49 +18,13 @@ type ItemProps = {
 };
 
 export default function Icons() {
-  // global state
-  const { docs } = useCollection("categories");
-
   // properties
-  const { addCategoryToCollection } = useAddCategory();
-  const { user } = useAuthContext();
-
-  // useEffect(() => {
-  //   const clonedArr = Object.assign([], docs);
-  //   setCategories(clonedArr);
-  // }, [docs]);
-
-  async function addToList(item: {
-    title: string;
-    icon: string;
-    color: string;
-    isChecked: boolean;
-  }) {
-    addCategoryToCollection(
-      `users/${user.uid}/categories`,
-      item.title,
-      item.icon,
-      item.color,
-      item.isChecked
-    );
-  }
+  const { docs } = useCollection(`categories`);
 
   const CategoryItems =
     docs &&
     (docs as unknown as any[]).map((item: ItemProps) => (
-      <button
-        key={item.id}
-        className={`bg-dark_500 border-2 rounded-3xl inline-block m-6 p-6 hover:bg-${"item.color"}`}
-        style={{ borderColor: item.color }}
-      >
-        <img
-          src={item.icon}
-          alt={item.title}
-          className="h-8 w-8"
-          style={{ color: item.color }}
-          onClick={() => addToList(item)}
-        />
-      </button>
+      <CategoryItem key={item.id} {...item} />
     ));
 
   return (
@@ -71,5 +39,39 @@ export default function Icons() {
         </section>
       </div>
     </main>
+  );
+}
+
+function CategoryItem({ title, color, icon, isChecked }: ItemProps) {
+  // local state
+  const [hover, setHover] = useState(false);
+
+  // properties
+  const { addCategory } = useAddCategory();
+  const { user } = useAuthContext();
+
+  // methods
+  function handleClick() {
+    addCategory(`users/${user.uid}/category`, color, icon, isChecked, title);
+  }
+
+  return (
+    <button
+      className={`bg-dark_500 border-2 rounded-3xl inline-block m-6 p-6 hover:animate-pulse`}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={
+        hover
+          ? {
+              borderColor: color,
+              backgroundColor: color,
+              transition: "ease-in 200ms",
+            }
+          : { borderColor: color }
+      }
+      onClick={handleClick}
+    >
+      <img src={icon} alt={title} className="h-8 w-8" />
+    </button>
   );
 }

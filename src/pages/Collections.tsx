@@ -10,8 +10,9 @@ import { useAuthContext } from "../hooks/useAuthContext";
 export default function Collections() {
   const { user } = useAuthContext();
 
-  const { docs } = useCollection(`users/${user.uid}/categories`);
+  const { docs } = useCollection(`users/${user.uid}/category`);
 
+  console.log(docs);
   const activeItems =
     docs &&
     (docs as unknown as any[]).map((item: CategoryType) => (
