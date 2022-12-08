@@ -8,9 +8,11 @@ type Props = {
 };
 
 export default function SideBar({ show }: Props) {
+  // properties
   const { user } = useAuthContext();
   const { docs } = useCollection(`users/${user.uid}/category`);
 
+  // components
   const activeItems =
     docs &&
     (docs as unknown as any[]).map((item: CategoryType) => (

@@ -5,3 +5,10 @@ export type CategoryType = {
   id: string;
   title: string;
 };
+
+export type ButtonType = {
+  text: string;
+  theme: string;
+  clickHandler?: () => void;
+  disabled?: boolean;
+};

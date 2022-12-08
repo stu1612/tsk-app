@@ -1,5 +1,4 @@
 // npm
-import { useEffect, useState } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
 import { MdArrowBackIos } from "react-icons/md";
 import { RiAddFill } from "react-icons/ri";
@@ -23,9 +22,6 @@ type TaskItemTypes = {
 };
 
 export default function Tasks() {
-  // local state
-  const [tasks, setTasks] = useState([]);
-
   // properties
   const { user } = useAuthContext();
   const params = useParams();
@@ -33,34 +29,31 @@ export default function Tasks() {
   const { title } = params;
 
   const id = location.state;
-  const path = `users/${user.uid}/categories/${id}/tasks`;
+  const path = `users/${user.uid}/category/${id}/tasks`;
   const { docs } = useCollection(path);
-
-  useEffect(() => {
-    const clonedArr = Object.assign([], docs);
-    setTasks(clonedArr);
-  }, [docs]);
 
   // methods
   function countIsChecked(status: boolean) {
     const count =
-      tasks &&
-      tasks.filter((item: TaskItemTypes) => item.isChecked === status).length;
+      docs &&
+      (docs as unknown as any[]).filter(
+        (item: TaskItemTypes) => item.isChecked === status
+      ).length;
     return count;
   }
 
   // components
   const CurrentTasks =
-    tasks &&
-    tasks.map((item: TaskItemTypes) => {
+    docs &&
+    (docs as unknown as any[]).map((item: TaskItemTypes) => {
       return (
         !item.isChecked && <CurrentTask key={item.id} {...item} path={path} />
       );
     });
 
   const CompletedTasks =
-    tasks &&
-    tasks.map((item: TaskItemTypes) => {
+    docs &&
+    (docs as unknown as any[]).map((item: TaskItemTypes) => {
       return (
         item.isChecked && <CompletedTask key={item.id} {...item} path={path} />
       );

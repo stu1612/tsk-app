@@ -1,7 +1,9 @@
 // files
 import capitalizeString from "../../utils/capitalizeString";
-import CheckBox from "./CheckBox";
+import CheckBox from "../forms/CheckBox";
 import useUpdateTaskStatus from "../../hooks/useUpdateTaskStatus";
+
+// UI
 import Moment from "./Moment";
 
 type TaskProp = {

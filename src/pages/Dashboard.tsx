@@ -24,7 +24,7 @@ export default function Dashboard() {
   const { user } = useAuthContext();
   const { docs } = useCollection(`users/${user.uid}/category`);
 
-  // time of day message function
+  // time of day message
   const timeOfDay = greeting();
 
   // components

@@ -8,7 +8,7 @@ import useDeleteTask from "../../hooks/useDeleteTask";
 import useUpdateTaskStatus from "../../hooks/useUpdateTaskStatus";
 
 // UI
-import CheckBox from "./CheckBox";
+import CheckBox from "../forms/CheckBox";
 import Moment from "./Moment";
 
 type TaskProp = {

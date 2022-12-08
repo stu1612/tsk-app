@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 
 // files
+import { CategoryType } from "../../global";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import countArr from "../../utils/countArray";
 import countIsChecked from "../../utils/countIsChecked";
@@ -11,20 +12,18 @@ import useCollection from "../../hooks/useCollection";
 // UI
 import ProgressBar from "./ProgressBar";
 
-type Props = {
-  id: string;
-  icon: string;
-  title: string;
-  color: string;
-};
-
-export default function CollectionItem({ id, icon, title, color }: Props) {
+export default function CollectionItem({
+  id,
+  icon,
+  title,
+  color,
+}: CategoryType) {
   // local state
   const [tasks, setTasks] = useState([]);
 
   // properties
   const { user } = useAuthContext();
-  const path = `users/${user.uid}/categories/${id}/tasks`;
+  const path = `users/${user.uid}/category/${id}/tasks`;
   const { docs } = useCollection(path);
 
   // useEffect that saves the returned docs collection in array state

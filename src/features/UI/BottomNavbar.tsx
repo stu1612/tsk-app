@@ -1,9 +1,9 @@
 // npm
-import { MdSpaceDashboard } from "react-icons/md";
-import { MdCollectionsBookmark } from "react-icons/md";
-import { TbIcons } from "react-icons/tb";
 import { FaUserCircle } from "react-icons/fa";
+import { MdCollectionsBookmark } from "react-icons/md";
+import { MdSpaceDashboard } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import { TbIcons } from "react-icons/tb";
 
 // files
 import data from "../../data/bottomNav.json";

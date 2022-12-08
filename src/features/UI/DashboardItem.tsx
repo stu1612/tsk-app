@@ -29,6 +29,7 @@ export default function DashboardItem({
   const path = `users/${user.uid}/category/${id}/tasks`;
   const { docs } = useCollection(path);
 
+  console.log(docs);
   // components
   const CurrentTasks =
     docs &&
@@ -39,6 +40,11 @@ export default function DashboardItem({
         )
       );
     });
+
+  const EmptyList =
+    docs &&
+    (docs as unknown as any[]).length === 0 &&
+    "Collection list is empty";
 
   return (
     <div className="bg-gray-800 overflow-hidden mb-6 rounded-xl ">
@@ -52,6 +58,7 @@ export default function DashboardItem({
         <p className="capitalize">{title}</p>
       </div>
       <div className="p-2">{CurrentTasks}</div>
+      <div className="p-2 ml-2 text-slate-500">{EmptyList}</div>
       <Link
         to={`tasks/${title}`}
         state={id}

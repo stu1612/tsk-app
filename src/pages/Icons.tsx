@@ -8,6 +8,7 @@ import useCollection from "../hooks/useCollection";
 
 // UI
 import MainNavbar from "../features/UI/MainNavbar";
+import Tooltip from "../features/UI/ToolTip";
 
 type ItemProps = {
   id: string;
@@ -56,22 +57,24 @@ function CategoryItem({ title, color, icon, isChecked }: ItemProps) {
   }
 
   return (
-    <button
-      className={`bg-dark_500 border-2 rounded-3xl inline-block m-6 p-6 hover:animate-pulse`}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      style={
-        hover
-          ? {
-              borderColor: color,
-              backgroundColor: color,
-              transition: "ease-in 200ms",
-            }
-          : { borderColor: color }
-      }
-      onClick={handleClick}
-    >
-      <img src={icon} alt={title} className="h-8 w-8" />
-    </button>
+    <Tooltip title={title} placement="top">
+      <button
+        className={`bg-dark_500 border-2 rounded-3xl inline-block m-6 p-6 hover:animate-pulse`}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        style={
+          hover
+            ? {
+                borderColor: color,
+                backgroundColor: color,
+                transition: "ease-in 200ms",
+              }
+            : { borderColor: color }
+        }
+        onClick={handleClick}
+      >
+        <img src={icon} alt={title} className="h-8 w-8" />
+      </button>
+    </Tooltip>
   );
 }
