@@ -6,6 +6,14 @@ module.exports = {
       inter: ["Inter", "sans-serif"],
     },
     extend: {
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "scale(0.9)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 200ms linear",
+      },
       colors: {
         black: "#181818",
         dark_500: "#1d1d26",

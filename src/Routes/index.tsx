@@ -3,19 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
 // pages
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import Signup from "../pages/Signup";
-import Dashboard from "../pages/Dashboard";
 import Collections from "../pages/Collections";
-import Tasks from "../pages/Tasks";
+import Dashboard from "../pages/Dashboard";
+import Home from "../pages/Home";
 import Icons from "../pages/Icons";
-import ResetPassword from "../pages/Tasks";
 import LearnMore from "../pages/LearnMore";
-import User from "../pages/User";
+import Login from "../pages/Login";
 import MobileAddTask from "../pages/MobileAddTask";
-
-import Play from "../pages/Play";
+import ResetPassword from "../pages/Tasks";
+import Signup from "../pages/Signup";
+import Tasks from "../pages/Tasks";
+import User from "../pages/User";
 
 // UI
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -30,7 +28,6 @@ export default function AppRoutes() {
           {!user ? (
             <>
               <Routes>
-                {/* <Route path="/" element={<Play />} /> */}
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />

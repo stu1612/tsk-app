@@ -30,7 +30,7 @@ export default function AddTask({ id }: Prop) {
     setTask("");
   };
   return (
-    <div className="hidden md:grid">
+    <div className="hidden md:grid w-full">
       <form onSubmit={handleSubmit} className="relative">
         <input
           required
@@ -38,7 +38,7 @@ export default function AddTask({ id }: Prop) {
           placeholder="Add a task"
           value={task}
           onChange={handleChange}
-          className="w-full p-2 bg-dark_500 rounded-xl border border-gray-800 md:pl-12 relative focus:ring-0 focus:border-gray-600 "
+          className="w-full p-2 bg-dark_500 rounded-xl border border-gray-700 md:pl-12 relative focus:ring-0 transition ease-linear duration-150 focus:border-gray-400 focus:border-2 "
         />
         <button className="hidden md:block absolute top-1/2 transform -translate-y-1/2 bg-primary py-1 px-1 ml-2 rounded-lg text-lg transition-all hover:scale-110">
           <RiAddFill color="black" />

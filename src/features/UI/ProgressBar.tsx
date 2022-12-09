@@ -16,7 +16,7 @@ export default function ProgressBar({ percentage, color }: Props) {
           strokeLinecap: "rounded",
           pathTransitionDuration: 0.5,
           // pathColor: "#20212C",
-          pathColor: "#262628",
+          pathColor: "#585858",
           trailColor: color,
         })}
       />

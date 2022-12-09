@@ -2,6 +2,7 @@
 import { useAuthContext } from "../../hooks/useAuthContext";
 import useCollection from "../../hooks/useCollection";
 import { CategoryType } from "../../global";
+import { Link } from "react-router-dom";
 
 type Props = {
   show: boolean;
@@ -21,10 +22,10 @@ export default function SideBar({ show }: Props) {
 
   return (
     <div
-      className={`hidden fixed left-0 top-20 h-screen w-44  bg-gray-800 md:block mr-8 
+      className={`hidden fixed left-0 top-20 h-screen w-40 transition ease-in duration-200 bg-gray-800 md:block mr-8 
       ${show ? "translate-x-0 " : "-translate-x-full"} `}
     >
-      <h2>Collections</h2>
+      <h2 className="p-4">Collections</h2>
       <div>{activeItems}</div>
     </div>
   );
@@ -32,7 +33,7 @@ export default function SideBar({ show }: Props) {
 
 function SidebarItem({ color, title, icon }: CategoryType) {
   return (
-    <div className="flex flex-row justify-start items-center my-2 p-2 ">
+    <div className="flex flex-row justify-start items-center my-1 px-4 py-2 ">
       <div
         className="p-2 mr-3 rounded-t-xl rounded-b-2xl"
         style={{ backgroundColor: color }}

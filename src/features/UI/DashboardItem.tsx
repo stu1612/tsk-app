@@ -29,7 +29,6 @@ export default function DashboardItem({
   const path = `users/${user.uid}/category/${id}/tasks`;
   const { docs } = useCollection(path);
 
-  console.log(docs);
   // components
   const CurrentTasks =
     docs &&

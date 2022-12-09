@@ -8,7 +8,9 @@ import useCollection from "../hooks/useCollection";
 
 // UI
 import MainNavbar from "../features/UI/MainNavbar";
+import MobileNavbar from "../features/UI/MobileNavbar";
 import Tooltip from "../features/UI/ToolTip";
+import BottomNavbar from "../features/UI/BottomNavbar";
 
 type ItemProps = {
   id: string;
@@ -30,15 +32,17 @@ export default function Icons() {
 
   return (
     <main className="relative">
+      <MobileNavbar title="Collection List" />
       <MainNavbar burger={false} />
-      <div className=" md:flex items-center justify-center">
-        <section className="absolute top-0 h-fit w-full pb-24 px-2 overflow-scroll md:w-[500px] md:px-0 md:top-24">
-          <div className="w-8/12 pb-8 pt-8 ">
+      <section className=" md:flex items-center justify-center ">
+        <div className="absolute top-24 h-fit w-full pb-24 px-4 overflow-scroll md:w-[600px] md:px-0 md:top-1/2 md:translate-y-1/2">
+          {/* <div className="w-full pb-8 pt-8 ">
             <h2 className="text-slate-200 text-2xl font-lg">Collection List</h2>
-          </div>
-          <div>{CategoryItems}</div>
-        </section>
-      </div>
+          </div> */}
+          <div className="flex flex-wrap justify-center">{CategoryItems}</div>
+        </div>
+      </section>
+      <BottomNavbar />
     </main>
   );
 }
@@ -46,6 +50,7 @@ export default function Icons() {
 function CategoryItem({ title, color, icon, isChecked }: ItemProps) {
   // local state
   const [hover, setHover] = useState(false);
+  const [effect, setEffect] = useState(false);
 
   // properties
   const { addCategory } = useAddCategory();
@@ -53,28 +58,35 @@ function CategoryItem({ title, color, icon, isChecked }: ItemProps) {
 
   // methods
   function handleClick() {
+    setEffect(true);
     addCategory(`users/${user.uid}/category`, color, icon, isChecked, title);
   }
 
   return (
     <Tooltip title={title} placement="top">
-      <button
-        className={`bg-dark_500 border-2 rounded-3xl inline-block m-6 p-6 hover:animate-pulse`}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        style={
-          hover
-            ? {
-                borderColor: color,
-                backgroundColor: color,
-                transition: "ease-in 200ms",
-              }
-            : { borderColor: color }
-        }
-        onClick={handleClick}
-      >
-        <img src={icon} alt={title} className="h-8 w-8" />
-      </button>
+      <div className="flex flex-col justify-center items-center m-6">
+        <button
+          className={`bg-dark_500 border-2 rounded-3xl scale-100 inline-block mb-1 p-6  ${
+            effect && "animate-wiggle"
+          }`}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          onAnimationEnd={() => setEffect(false)}
+          style={
+            hover
+              ? {
+                  borderColor: color,
+                  backgroundColor: color,
+                  transition: "ease-in 200ms",
+                }
+              : { borderColor: color }
+          }
+          onClick={handleClick}
+        >
+          <img src={icon} alt={title} className="h-8 w-8" />
+        </button>
+        <p className="md:hidden">{title}</p>
+      </div>
     </Tooltip>
   );
 }

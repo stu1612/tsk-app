@@ -1,5 +1,6 @@
 // npm
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // files
 import form from "../data/signup.json";
@@ -8,7 +9,6 @@ import useSignUp from "../hooks/useSignUp";
 // UI
 import Button from "../features/UI/Button";
 import FileInput from "../features/forms/FileInput";
-import GoBackButton from "../features/UI/GoBackButton";
 import Header from "../features/UI/Header";
 import Input from "../features/forms/Input";
 import Loading from "../features/UI/Loading";
@@ -25,6 +25,7 @@ export default function Signup() {
 
   // properties
   const { signup, error, loading } = useSignUp();
+  const navigate = useNavigate();
 
   // methods
   function handleSubmit(event: React.FormEvent) {
@@ -69,7 +70,11 @@ export default function Signup() {
           <FileInput imgError={imgError} handleFileChange={handleFileChange} />
           {imgError && <Button text="sign up" theme="light" disabled={true} />}
           {!imgError && <Button text="sign up" theme="light" />}
-          <GoBackButton />
+          <Button
+            text="close"
+            theme="dark"
+            clickHandler={() => navigate("..")}
+          />
           {error && <small className="text-yellow-600">{error}</small>}
         </form>
       </section>

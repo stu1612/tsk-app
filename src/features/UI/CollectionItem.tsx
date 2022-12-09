@@ -1,5 +1,6 @@
 // npm
 import { useEffect, useState } from "react";
+import { FiMoreHorizontal } from "react-icons/fi";
 
 // files
 import { CategoryType } from "../../global";
@@ -8,6 +9,8 @@ import countArr from "../../utils/countArray";
 import countIsChecked from "../../utils/countIsChecked";
 import getPercentage from "../../utils/getPercentage";
 import useCollection from "../../hooks/useCollection";
+import Button from "./Button";
+import useDeleteTask from "../../hooks/useDeleteTask";
 
 // UI
 import ProgressBar from "./ProgressBar";
@@ -20,11 +23,13 @@ export default function CollectionItem({
 }: CategoryType) {
   // local state
   const [tasks, setTasks] = useState([]);
+  const [bg, setBg] = useState(false);
 
   // properties
   const { user } = useAuthContext();
   const path = `users/${user.uid}/category/${id}/tasks`;
   const { docs } = useCollection(path);
+  const { deleteTask } = useDeleteTask();
 
   // useEffect that saves the returned docs collection in array state
   useEffect(() => {
@@ -44,7 +49,15 @@ export default function CollectionItem({
   }
 
   return (
-    <div className="min-w-[170px] mr-2 bg-gray-800 rounded-2xl p-5">
+    <div className="relative min-w-[200px] md:min-w-[170px] m-2  mb-2 bg-gray-800 rounded-2xl p-5">
+      {currentTasks === 0 && (
+        <button
+          className="absolute top-2 right-2 z-50"
+          onClick={() => setBg(!bg)}
+        >
+          <FiMoreHorizontal />
+        </button>
+      )}
       <img
         src={icon}
         alt={title}
@@ -57,6 +70,19 @@ export default function CollectionItem({
           <small className="text-slate-500">{taskStatusMessage()}</small>
         </div>
         <ProgressBar percentage={percentage} color={color} />
+      </div>
+      <div
+        className={`${
+          bg
+            ? "absolute inset-0 rounded-2xl bg-gray-800 flex justify-center items-center"
+            : "hidden"
+        }`}
+      >
+        <Button
+          text="Deselect"
+          theme="light"
+          clickHandler={() => deleteTask(`users/${user.uid}/category`, id)}
+        />
       </div>
     </div>
   );

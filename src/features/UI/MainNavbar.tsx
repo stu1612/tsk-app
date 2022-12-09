@@ -18,6 +18,10 @@ type NavbarProp = {
   burger: boolean;
 };
 
+type BurgerType = {
+  show: boolean;
+};
+
 export default function MainNavbar({ burger }: NavbarProp) {
   // local state
   const [show, setShow] = useState(true);
@@ -39,10 +43,14 @@ export default function MainNavbar({ burger }: NavbarProp) {
         className={({ isActive }) =>
           isActive ? "text-slate-300" : "text-slate-500"
         }
-        style={{ display: "flex", alignItems: "center", margin: "0 1rem" }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          margin: "0 1rem",
+        }}
       >
         <Icon />
-        <h2>{item.title}</h2>
+        <h2 className="ml-1">{item.title}</h2>
       </NavLink>
     );
   });
@@ -51,7 +59,11 @@ export default function MainNavbar({ burger }: NavbarProp) {
     <>
       <nav className="fixed bg-gray-800 w-full h-20 z-50 items-center justify-between px-2 hidden md:flex">
         <div className="flex flex-row items-center">
-          {burger && <h1 onClick={toggleShow}>Hamburger</h1>}
+          {burger && (
+            <div onClick={toggleShow}>
+              <Hamburger show={show} />
+            </div>
+          )}
           {NavItems}
         </div>
         <div>
@@ -60,5 +72,32 @@ export default function MainNavbar({ burger }: NavbarProp) {
       </nav>
       {burger && <SideBar show={show} />}
     </>
+  );
+}
+
+function Hamburger({ show }: BurgerType) {
+  const burgerLine = `h-1 w-10 my-1 rounded-full bg-gray-200 transition ease transform duration-300`;
+  return (
+    <button className="flex flex-col h-12 w-12  rounded justify-center items-center group">
+      <div
+        className={`${burgerLine} ${
+          !show
+            ? "opacity-50 w-4 group-hover:opacity-100"
+            : "opacity-50 group-hover:opacity-100"
+        }`}
+      />
+      <div
+        className={`${burgerLine} ${
+          !show ? "w-6" : "opacity-50 group-hover:opacity-100"
+        }`}
+      />
+      <div
+        className={`${burgerLine} ${
+          !show
+            ? " opacity-50 w-4 group-hover:opacity-100"
+            : "opacity-50 group-hover:opacity-100"
+        }`}
+      />
+    </button>
   );
 }

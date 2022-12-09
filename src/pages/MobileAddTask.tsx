@@ -22,7 +22,7 @@ export default function MobileAddTask() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    addTask(`users/${user.uid}/categories/${id}/tasks`, task);
+    addTask(`users/${user.uid}/category/${id}/tasks`, task);
     setTask("");
     navigate(-1);
   };
@@ -35,7 +35,7 @@ export default function MobileAddTask() {
         <Input setup={form.task} state={[task, setTask]} />
         <div className="flex flex-col w-full">
           <Button text="add task" theme="light" />
-          <div className="grid">
+          <div className="grid mt-4">
             <Button
               text="close"
               theme="dark"
