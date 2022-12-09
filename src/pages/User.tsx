@@ -8,10 +8,12 @@ import { MdOutlineEmail } from "react-icons/md";
 import { MdOutlineDateRange } from "react-icons/md";
 import Button from "../features/UI/Button";
 import useResetPassword from "../hooks/useResetPassword";
+import useLogout from "../hooks/useLogout";
 
 export default function User() {
   const { user } = useAuthContext();
   const { resetPassword } = useResetPassword();
+  const { logout } = useLogout();
 
   return (
     <main className="relative">
@@ -40,10 +42,10 @@ export default function User() {
           </div>
           <div className="h-1 w-full bg-primary my-4 rounded-lg" />
           <div className="flex flex-col">
-            <Button text="logout" theme="dark" />
+            <Button text="logout" theme="dark" clickHandler={logout} />
             <Button text="delete account" theme="dark" />
             <Button text="update profile" theme="light" />
-            <Link to="/reset_password">
+            <Link to="/reset_password" className="inline-block">
               <Button text="reset password" theme="light" />
             </Link>
           </div>

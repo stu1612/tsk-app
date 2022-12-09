@@ -1,18 +1,22 @@
 [
   {
     "id": 0,
-    "path": "/"
+    "path": "/",
+    "title": "Dashboard"
   },
   {
     "id": 1,
-    "path": "/collections"
+    "path": "/collections",
+    "title": "Collections"
   },
   {
     "id": 2,
-    "path": "/icons"
+    "path": "/icons",
+    "title": "Icons"
   },
   {
     "id": 3,
-    "path": "/user"
+    "path": "/user",
+    "title": "User"
   }
 ]
