@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
+
 type Prop = {
   src: string;
 };
 
 export default function Avatar({ src }: Prop) {
   return (
-    <div className="h-12 w-12">
-      <img src={src} alt="avatar" />
-    </div>
+    <Link to="/user">
+      <img src={src} alt="avatar" className="h-10 w-10 rounded-full" />
+    </Link>
   );
 }

@@ -10,7 +10,7 @@ import Icons from "../pages/Icons";
 import LearnMore from "../pages/LearnMore";
 import Login from "../pages/Login";
 import MobileAddTask from "../pages/MobileAddTask";
-import ResetPassword from "../pages/Tasks";
+import ResetPassword from "../pages/ResetPassword";
 import Signup from "../pages/Signup";
 import Tasks from "../pages/Tasks";
 import User from "../pages/User";
@@ -45,6 +45,7 @@ export default function AppRoutes() {
                 <Route path="/tasks/add_task" element={<MobileAddTask />} />
                 <Route path="/icons" element={<Icons />} />
                 <Route path="/user" element={<User />} />
+                <Route path="/reset_password" element={<ResetPassword />} />
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </>

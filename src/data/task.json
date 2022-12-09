@@ -4,5 +4,11 @@
     "autoFocus": true,
     "type": "text",
     "required": true
+  },
+  "email": {
+    "span": "Email",
+    "autoFocus": true,
+    "type": "email",
+    "required": true
   }
 }
