@@ -7,7 +7,6 @@ import Collections from "../pages/Collections";
 import Dashboard from "../pages/Dashboard";
 import Home from "../pages/Home";
 import Icons from "../pages/Icons";
-import LearnMore from "../pages/LearnMore";
 import Login from "../pages/Login";
 import MobileAddTask from "../pages/MobileAddTask";
 import ResetPassword from "../pages/ResetPassword";
@@ -34,7 +33,6 @@ export default function AppRoutes() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/reset_password" element={<ResetPassword />} />
-                <Route path="/learn_more" element={<LearnMore />} />
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </>

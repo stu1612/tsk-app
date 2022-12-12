@@ -37,7 +37,7 @@ export default function Collections() {
           </div>
           <div className="flex flex-row items-start justify-center md:justify-start ">
             <div className="hidden md:block">
-              <Button text="All collections" theme="dark" />
+              <Button text="All collections" theme="dark" disabled={true} />
             </div>
             <Link to="/icons" className="ml-2 hidden md:block">
               <Button text="Add collection" theme="light" />

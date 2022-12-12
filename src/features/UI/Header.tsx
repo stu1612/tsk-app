@@ -20,10 +20,6 @@ export default function Header() {
           <Link to="/signup">
             <Button text="get started" theme="light" />
           </Link>
-
-          <Link to={"/learn_more"} className="ml-4">
-            <Button text="learn more" theme="dark" />
-          </Link>
         </div>
       </header>
     </>

@@ -1,5 +1,6 @@
 // npm
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // files
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -23,6 +24,7 @@ type ItemProps = {
 export default function Icons() {
   // properties
   const { docs } = useCollection(`categories`);
+  const navigate = useNavigate();
 
   const CategoryItems =
     docs &&
@@ -36,9 +38,6 @@ export default function Icons() {
       <MainNavbar burger={false} />
       <section className=" md:flex items-center justify-center ">
         <div className="absolute top-24 h-fit w-full pb-24 px-4 overflow-scroll md:w-[600px] md:px-0 md:top-1/2 md:translate-y-1/2">
-          {/* <div className="w-full pb-8 pt-8 ">
-            <h2 className="text-slate-200 text-2xl font-lg">Collection List</h2>
-          </div> */}
           <div className="flex flex-wrap justify-center">{CategoryItems}</div>
         </div>
       </section>

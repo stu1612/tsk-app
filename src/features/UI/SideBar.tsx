@@ -2,7 +2,6 @@
 import { useAuthContext } from "../../hooks/useAuthContext";
 import useCollection from "../../hooks/useCollection";
 import { CategoryType } from "../../global";
-import { Link } from "react-router-dom";
 
 type Props = {
   show: boolean;
