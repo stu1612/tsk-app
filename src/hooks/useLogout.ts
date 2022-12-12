@@ -1,22 +1,33 @@
 // npm
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
+import { useAuthContext } from "./useAuthContext";
+import { toast } from "react-hot-toast";
 
 // files
 import { auth } from "../firebase/config";
-// import { useAuthContext } from "./useAuthContext";
 
 export default function useLogout() {
+  // local state
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const { dispatch } = useAuthContext();
+  const navigate = useNavigate();
 
   async function logout() {
     setError(null);
     setLoading(true);
 
     try {
-      await signOut(auth);
+      await signOut(auth).then(() => {
+        dispatch({ type: "LOGOUT" });
+      });
+      toast.success("You have succesfully logged out");
+      navigate("/");
+
       if (!isCancelled) {
         setError(null);
         setLoading(false);

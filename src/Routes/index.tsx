@@ -17,6 +17,7 @@ import User from "../pages/User";
 
 // UI
 import { useAuthContext } from "../hooks/useAuthContext";
+import Toast from "../features/UI/Toast";
 
 export default function AppRoutes() {
   const { user, authIsReady } = useAuthContext();
@@ -27,6 +28,7 @@ export default function AppRoutes() {
         <>
           {!user ? (
             <>
+              <Toast />
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
@@ -38,6 +40,7 @@ export default function AppRoutes() {
             </>
           ) : (
             <>
+              <Toast />
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/collections" element={<Collections />} />

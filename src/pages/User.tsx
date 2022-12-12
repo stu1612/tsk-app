@@ -7,12 +7,10 @@ import { FaUserCircle } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdOutlineDateRange } from "react-icons/md";
 import Button from "../features/UI/Button";
-import useResetPassword from "../hooks/useResetPassword";
 import useLogout from "../hooks/useLogout";
 
 export default function User() {
   const { user } = useAuthContext();
-  const { resetPassword } = useResetPassword();
   const { logout } = useLogout();
 
   return (
@@ -20,7 +18,7 @@ export default function User() {
       <MobileNavbar title="User information" />
       <MainNavbar burger={false} />
       <section className=" md:flex items-center justify-center">
-        <div className="absolute top-24 h-fit w-full pb-24 px-4 overflow-scroll md:w-[600px] md:px-0 md:ml-36">
+        <div className="absolute top-24 h-fit w-full px-4 md:w-[400px] md:px-0 ">
           <div className="hidden w-8/12 pb-8 pt-8 md:block">
             <h2 className="text-slate-200 text-2xl font-lg">
               User information
@@ -43,9 +41,8 @@ export default function User() {
           <div className="h-1 w-full bg-primary my-4 rounded-lg" />
           <div className="flex flex-col">
             <Button text="logout" theme="dark" clickHandler={logout} />
-            <Button text="delete account" theme="dark" />
-            <Button text="update profile" theme="light" />
-            <Link to="/reset_password" className="inline-block">
+
+            <Link to="/reset_password" className="grid">
               <Button text="reset password" theme="light" />
             </Link>
           </div>

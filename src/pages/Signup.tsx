@@ -56,13 +56,13 @@ export default function Signup() {
 
   return (
     <OnBoardingLayout>
-      <div className="absolute h-screen z-40 w-full bg-dark_500 md:bg-opacity-40 backdrop-filter backdrop-blur-md"></div>
+      <div className="fixed h-screen z-40 w-full bg-dark_500 md:bg-opacity-40 backdrop-filter backdrop-blur-md"></div>
       <OnBoardingNavbar />
       <Header />
-      <section className=" z-50 w-11/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:w-[400px] grid min-h-fit  ">
+      <section className=" z-50 w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:w-[400px] grid min-h-fit overflow-hidden ">
         <form
           onSubmit={handleSubmit}
-          className="grid py-6 px-8 rounded-3xl md:bg-opacity-70 md:bg-slate-700 backdrop-filter backdrop-blur-md"
+          className="grid py-6 px-8 rounded-3xl md:bg-opacity-70 md:bg-slate-700 backdrop-filter backdrop-blur-md "
         >
           <Input setup={form.email} state={[email, setEmail]} />
           <Input setup={form.password} state={[password, setPassword]} />

@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <>
       <header className="absolute p-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center flex flex-col justify-center z-10">
-        <h2 className="text-3xl text-slate-100 pb-4 font-extrabold md:text-6xl">
+        <h2 className="text-5xl text-slate-100 pb-4 font-extrabold md:text-6xl">
           Tsks, just tasks
           <span className="text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-500 via-pink-400 to-pink-200">
             .

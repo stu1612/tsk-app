@@ -40,6 +40,7 @@ export default function CollectionItem({
   // function properties that counts total tasks - active tasks and calculates completed percentage - used for circle progress bar
   const totalTasks = countArr(tasks);
   const currentTasks = countIsChecked(tasks, true);
+  const completedTasks = countIsChecked(tasks, false);
   const percentage = getPercentage(totalTasks, currentTasks);
 
   // returned message based on task completion status
@@ -50,7 +51,7 @@ export default function CollectionItem({
 
   return (
     <div className="relative min-w-[200px] md:min-w-[170px] m-2  mb-2 bg-gray-800 rounded-2xl p-5">
-      {currentTasks === 0 && (
+      {completedTasks === 0 && (
         <button
           className="absolute top-2 right-2 z-50"
           onClick={() => setBg(!bg)}
