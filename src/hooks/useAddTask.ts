@@ -1,5 +1,7 @@
 // npm
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { toast } from "react-hot-toast";
+
 // files
 import { db } from "../firebase/config";
 
@@ -12,8 +14,10 @@ export default function useAddTask() {
         isChecked: false,
         timestamp: serverTimestamp(),
       });
+      toast.success(`Task created !`);
     } catch (err) {
       console.log(err);
+      toast.error(`Ooops, something went wrong!`);
     }
   }
   return { addTask };

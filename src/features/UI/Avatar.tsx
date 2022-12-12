@@ -7,7 +7,11 @@ type Prop = {
 export default function Avatar({ src }: Prop) {
   return (
     <Link to="/user">
-      <img src={src} alt="avatar" className="h-10 w-10 rounded-full" />
+      <img
+        src={src}
+        alt="avatar"
+        className="h-10 w-10 rounded-full object-cover"
+      />
     </Link>
   );
 }

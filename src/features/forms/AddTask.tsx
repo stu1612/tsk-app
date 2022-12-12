@@ -34,6 +34,8 @@ export default function AddTask({ id }: Prop) {
       <form onSubmit={handleSubmit} className="relative">
         <input
           required
+          minLength={3}
+          maxLength={80}
           type="text"
           placeholder="Add a task"
           value={task}

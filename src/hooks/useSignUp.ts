@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import { toast } from "react-hot-toast";
 
 // files
 import { auth, storage } from "../firebase/config";
@@ -57,6 +58,7 @@ export default function useSignUp() {
       });
 
       dispatch({ type: "LOGIN", payload: res.user });
+      toast.success(`You are logged in !`);
       setLoading(false);
       setError(null);
 
@@ -67,6 +69,7 @@ export default function useSignUp() {
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
+        toast.error(`Ooops, something went wrong !`);
         setLoading(false);
       }
     }

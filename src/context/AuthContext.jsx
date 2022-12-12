@@ -14,7 +14,8 @@ export function authReducer(state, action) {
     case "LOGOUT":
       return { ...state, user: null };
     case "RESET_PASSWORD":
-      return { ...state, user: action.payload };
+      // return { ...state, user: action.payload };
+      return { ...state, user: null };
     case "AUTH_IS_READY":
       return { ...state, user: action.payload, authIsReady: true };
     default:

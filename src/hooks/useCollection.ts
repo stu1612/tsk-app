@@ -4,13 +4,10 @@ import { useState, useEffect } from "react";
 import { db } from "../firebase/config";
 
 import { collection, onSnapshot } from "firebase/firestore";
-// import { CollectionReference } from "firebase/firestore";
 
 export default function useCollection(c: string) {
   const [docs, setDocs] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
-  // query
 
   useEffect(() => {
     setIsLoading(true);

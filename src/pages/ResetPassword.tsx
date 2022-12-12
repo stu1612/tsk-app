@@ -13,7 +13,7 @@ import form from "../data/task.json";
 
 export default function ResetPassword() {
   // properties
-  const { resetPassword, success } = useResetPassword();
+  const { resetPassword } = useResetPassword();
 
   // local state
   const [email, setEmail] = useState("");

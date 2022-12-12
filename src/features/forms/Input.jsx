@@ -7,6 +7,8 @@ export default function Input({ setup, state }) {
     <div className="relative w-full mb-8">
       <input
         required={required}
+        minLength={3}
+        maxLength={80}
         type={type}
         placeholder={span}
         value={getter}

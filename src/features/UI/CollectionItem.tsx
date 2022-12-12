@@ -23,7 +23,7 @@ export default function CollectionItem({
 }: CategoryType) {
   // local state
   const [tasks, setTasks] = useState([]);
-  const [bg, setBg] = useState(false);
+  const [removeItem, setRemoveItem] = useState(false);
 
   // properties
   const { user } = useAuthContext();
@@ -40,7 +40,6 @@ export default function CollectionItem({
   // function properties that counts total tasks - active tasks and calculates completed percentage - used for circle progress bar
   const totalTasks = countArr(tasks);
   const currentTasks = countIsChecked(tasks, true);
-  const completedTasks = countIsChecked(tasks, false);
   const percentage = getPercentage(totalTasks, currentTasks);
 
   // returned message based on task completion status
@@ -51,10 +50,10 @@ export default function CollectionItem({
 
   return (
     <div className="relative min-w-[200px] md:min-w-[170px] m-2  mb-2 bg-gray-800 rounded-2xl p-5">
-      {completedTasks === 0 && (
+      {totalTasks === 0 && (
         <button
           className="absolute top-2 right-2 z-50"
-          onClick={() => setBg(!bg)}
+          onClick={() => setRemoveItem(!removeItem)}
         >
           <FiMoreHorizontal />
         </button>
@@ -74,7 +73,7 @@ export default function CollectionItem({
       </div>
       <div
         className={`${
-          bg
+          removeItem
             ? "absolute inset-0 rounded-2xl bg-gray-800 flex justify-center items-center"
             : "hidden"
         }`}

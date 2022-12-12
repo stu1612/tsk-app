@@ -35,6 +35,7 @@ export default function useLogout() {
     } catch (err: any) {
       if (!isCancelled) {
         setError(err.message);
+        toast.error(`Ooops, something went wrong!`);
         setLoading(false);
         console.error(err);
       }

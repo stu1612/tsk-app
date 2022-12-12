@@ -1,4 +1,5 @@
 // npm
+import { useEffect } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
@@ -28,6 +29,10 @@ export default function DashboardItem({
   const { user } = useAuthContext();
   const path = `users/${user.uid}/category/${id}/tasks`;
   const { docs } = useCollection(path);
+
+  useEffect(() => {
+    localStorage.setItem("user token", user.uid);
+  }, [user.uid]);
 
   // components
   const CurrentTasks =

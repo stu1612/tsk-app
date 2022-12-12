@@ -63,7 +63,7 @@ export default function Tasks() {
     <main className="relative h-screen">
       <MainNavbar burger={true} />
       <section className=" md:flex items-center justify-center ">
-        <div className="absolute top-0 md:top-24 h-fit w-full pb-24 px-4 overflow-scroll md:w-[600px] md:px-0 md:ml-36 ">
+        <div className="absolute top-0 md:top-24 h-fit w-full pb-24 px-4  md:w-[600px] md:px-0 md:ml-36 ">
           <div className="w-full pb-8 pt-8 md:block">
             <div className=" bg-dark_500 w-full  flex flex-row items-center md:relative md:p-0">
               <Link

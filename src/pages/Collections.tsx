@@ -31,7 +31,7 @@ export default function Collections() {
       <MobileNavbar title="Collections" />
       <MainNavbar burger={true} />
       <section className=" md:flex items-center justify-center">
-        <div className="absolute top-24 h-fit w-full pb-24 px-4 overflow-scroll md:w-[600px] md:px-0 md:ml-36">
+        <div className="absolute top-24 h-fit w-full pb-24 px-4 md:w-[600px] md:px-0 md:ml-36">
           <div className="hidden w-8/12 pb-8 pt-8 md:block">
             <h2 className="text-slate-200 text-2xl font-lg">Collections</h2>
           </div>

@@ -33,6 +33,7 @@ export default function useLogin() {
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
+        toast.error(`Ooops, something went wrong!`);
         setLoading(false);
       }
     }

@@ -12,15 +12,16 @@ export default function Header() {
             .
           </span>
         </h2>
-        <p className="leading-5 font-thin md:leading-7 w-11/12 md:w-[400px] mx-auto">
+        <p className="leading-5 font-thin md:leading-7 w-[80%] md:w-[400px] mx-auto">
           Keep track of the daily tasks in life and get that satisfaction upon
           completion.
         </p>
-        <div className="mt-10 mx-auto flex flex-col md:flex-row">
+        <div className="mt-10 mx-auto flex flex-row flex-wrap px-3">
           <Link to="/signup">
             <Button text="get started" theme="light" />
           </Link>
-          <Link to={"/learn_more"} className="md:ml-4">
+
+          <Link to={"/learn_more"} className="ml-4">
             <Button text="learn more" theme="dark" />
           </Link>
         </div>
