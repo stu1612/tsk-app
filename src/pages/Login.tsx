@@ -16,8 +16,8 @@ import OnBoardingNavbar from "../features/UI/OnBoardingNavbar";
 
 export default function Login() {
   // local state
-  const [email, setEmail] = useState<string>("stu.bolderson@aol.com");
-  const [password, setPassword] = useState<string>("stu321");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   // properties
   const { login, error, loading } = useLogin();
 

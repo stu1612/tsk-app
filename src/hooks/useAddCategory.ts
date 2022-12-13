@@ -24,7 +24,9 @@ export default function useAddCategory() {
 
       await setDoc(doc(db, path, title), docData);
       toast.success(`Collection added !`);
-      navigate(-1);
+      setTimeout(() => {
+        navigate(-1);
+      }, 1000);
     } catch (err) {
       console.log(err);
     }

@@ -1,6 +1,5 @@
 // npm
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 // files
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -24,8 +23,8 @@ type ItemProps = {
 export default function Icons() {
   // properties
   const { docs } = useCollection(`categories`);
-  const navigate = useNavigate();
 
+  // components
   const CategoryItems =
     docs &&
     (docs as unknown as any[]).map((item: ItemProps) => (
